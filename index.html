@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>ПРЕДЛОЖКА ХАНОВА</title>
 
   <style>
@@ -13,34 +14,33 @@
     }
 
     body {
-      background: #0b0b0f;
+      background: #09090d;
       color: white;
       font-family: Arial, sans-serif;
       padding: 40px;
-      overflow-x: hidden;
     }
 
     h1 {
       text-align: center;
       font-size: 64px;
       margin-bottom: 12px;
-      letter-spacing: 4px;
+      letter-spacing: 3px;
       text-shadow:
-        0 0 10px #ffffff,
-        0 0 25px #ffffff44;
+        0 0 10px #fff,
+        0 0 30px rgba(255,255,255,0.3);
     }
 
     .subtitle {
       text-align: center;
-      color: #b0b0b0;
+      color: #a0a0a0;
       margin-bottom: 50px;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .videos-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 24px;
     }
 
     @media (max-width: 1400px) {
@@ -55,22 +55,22 @@
       }
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 700px) {
       .videos-grid {
         grid-template-columns: 1fr;
       }
 
       h1 {
-        font-size: 40px;
+        font-size: 38px;
       }
     }
 
     .card {
-      background: #14141b;
+      background: #13131a;
+      border: 1px solid #252530;
       border-radius: 18px;
       overflow: hidden;
-      transition: 0.2s ease;
-      border: 1px solid #262631;
+      transition: 0.2s;
     }
 
     .card:hover {
@@ -81,35 +81,30 @@
       width: 100%;
       aspect-ratio: 16/9;
       object-fit: cover;
-      background: #111;
+      background: #000;
     }
 
-    .card-content {
+    .content {
       padding: 16px;
     }
 
-    .video-title {
+    .title {
       font-size: 18px;
       font-weight: bold;
-      margin-bottom: 14px;
-      line-height: 1.3;
+      line-height: 1.35;
+      margin-bottom: 16px;
     }
 
     .ratings {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .rating {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .rating-top {
+    .rating-head {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 6px;
       font-size: 13px;
       color: #d0d0d0;
     }
@@ -118,38 +113,38 @@
       width: 100%;
       height: 12px;
       border-radius: 999px;
-      background: #222;
       overflow: hidden;
+      background: #222;
     }
 
     .fill {
       height: 100%;
       border-radius: 999px;
-      transition: 0.3s;
     }
 
-    .watch-btn {
+    .btn {
       display: block;
+      margin-top: 18px;
       width: 100%;
-      margin-top: 16px;
       text-align: center;
-      background: #ffffff;
-      color: black;
       text-decoration: none;
+      background: white;
+      color: black;
       padding: 12px;
       border-radius: 12px;
       font-weight: bold;
       transition: 0.2s;
     }
 
-    .watch-btn:hover {
+    .btn:hover {
       opacity: 0.85;
     }
 
     .loading {
-      padding: 40px;
       text-align: center;
+      padding: 80px;
       color: #777;
+      grid-column: 1/-1;
     }
   </style>
 </head>
@@ -167,60 +162,14 @@
   </div>
 
   <script>
-    /*
-    ==========================================================
-      ДОБАВЛЕНИЕ ВИДЕО
-
-      Просто вставляй новые объекты в массив videos.
-
-      hype:
-      100 = ярко жёлтый неон
-      0 = коричневый
-
-      fun:
-      100 = 🤣
-      75 = 😂
-      50 = 😆
-      30 = 😁
-      10 = 😅
-      0 = 😬
-
-      interest:
-      100 = яркий голубой неон
-      0 = тёмный ночной синий
-    ==========================================================
-    */
-
-    const videos = [
-
-      {
-        url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        hype: 95,
-        fun: 85,
-        interest: 70
-      },
-
-      {
-        url: "https://www.youtube.com/watch?v=3GwjfUFyY6M",
-        hype: 40,
-        fun: 100,
-        interest: 25
-      },
-
-      {
-        url: "https://www.youtube.com/watch?v=L_jWHffIx5E",
-        hype: 75,
-        fun: 50,
-        interest: 80
-      }
-
-    ];
 
     const grid = document.getElementById("videosGrid");
 
     function getYouTubeID(url) {
+
       const regExp =
-        /^.*(youtu.be\\/|v\\/|u\\/\\w\\/|embed\\/|watch\\?v=|&v=)([^#&?]*).*/;
+        /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+
       const match = url.match(regExp);
 
       return match && match[2].length === 11
@@ -229,198 +178,189 @@
     }
 
     function hypeColor(value) {
-      const lightness = 25 + value * 0.35;
 
-      return `
-        hsl(${40}, 100%, ${lightness}%)
-      `;
+      const light = 20 + value * 0.45;
+
+      return `hsl(50, 100%, ${light}%)`;
     }
 
     function hypeGlow(value) {
-      return value > 70
-        ? `0 0 12px rgba(255, 230, 0, ${value / 100})`
-        : "none";
+
+      if (value < 70) return "none";
+
+      return `0 0 16px rgba(255,230,0,${value / 100})`;
     }
 
     function interestColor(value) {
-      const lightness = 10 + value * 0.45;
 
-      return `
-        hsl(200, 100%, ${lightness}%)
-      `;
+      const light = 10 + value * 0.45;
+
+      return `hsl(200, 100%, ${light}%)`;
     }
 
     function interestGlow(value) {
-      return value > 70
-        ? `0 0 12px rgba(0, 200, 255, ${value / 100})`
-        : "none";
+
+      if (value < 70) return "none";
+
+      return `0 0 16px rgba(0,200,255,${value / 100})`;
+    }
+
+    function funColor(value) {
+
+      if (value <= 0) return "#666";
+
+      const light = 25 + value * 0.35;
+
+      return `hsl(120, 100%, ${light}%)`;
+    }
+
+    function funGlow(value) {
+
+      if (value < 70) return "none";
+
+      return `0 0 16px rgba(0,255,100,${value / 100})`;
     }
 
     function funEmoji(value) {
+
       if (value >= 100) return "🤣";
       if (value >= 75) return "😂";
       if (value >= 50) return "😆";
       if (value >= 30) return "😁";
       if (value >= 10) return "😅";
+
       return "😬";
     }
 
-    function funColor(value) {
-      if (value <= 0) {
-        return "#666";
-      }
-
-      const lightness = 25 + value * 0.4;
-
-      return `hsl(120, 100%, ${lightness}%)`;
-    }
-
-    function funGlow(value) {
-      return value > 70
-        ? `0 0 12px rgba(0, 255, 100, ${value / 100})`
-        : "none";
-    }
-
-    async function fetchVideoData(video) {
-
-      const id = getYouTubeID(video.url);
-
-      if (!id) return null;
+    async function loadVideos() {
 
       try {
 
-        const response = await fetch(
-          `https://noembed.com/embed?url=${video.url}`
-        );
+        const response = await fetch("./videos.json");
 
-        const data = await response.json();
+        const videos = await response.json();
 
-        return {
-          title: data.title || "без названия",
-          thumbnail: `https://img.youtube.com/vi/${id}/maxresdefault.jpg`,
-          url: video.url,
-          hype: video.hype,
-          fun: video.fun,
-          interest: video.interest
-        };
+        grid.innerHTML = "";
+
+        videos.forEach(video => {
+
+          const id = getYouTubeID(video.url);
+
+          if (!id) return;
+
+          const thumbnail =
+            `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+
+          const title =
+            video.title || "без названия";
+
+          const card = document.createElement("div");
+
+          card.className = "card";
+
+          card.innerHTML = `
+            <img
+              class="thumbnail"
+              src="${thumbnail}"
+              alt="preview"
+            >
+
+            <div class="content">
+
+              <div class="title">
+                ${title}
+              </div>
+
+              <div class="ratings">
+
+                <div>
+                  <div class="rating-head">
+                    <span>ХАЙП</span>
+                    <span>${video.hype}%</span>
+                  </div>
+
+                  <div class="bar">
+                    <div
+                      class="fill"
+                      style="
+                        width:${video.hype}%;
+                        background:${hypeColor(video.hype)};
+                        box-shadow:${hypeGlow(video.hype)};
+                      "
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="rating-head">
+                    <span>
+                      РЖЕКИЧ ${funEmoji(video.fun)}
+                    </span>
+
+                    <span>${video.fun}%</span>
+                  </div>
+
+                  <div class="bar">
+                    <div
+                      class="fill"
+                      style="
+                        width:${video.fun}%;
+                        background:${funColor(video.fun)};
+                        box-shadow:${funGlow(video.fun)};
+                      "
+                    ></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="rating-head">
+                    <span>ИНТЕРЕС</span>
+                    <span>${video.interest}%</span>
+                  </div>
+
+                  <div class="bar">
+                    <div
+                      class="fill"
+                      style="
+                        width:${video.interest}%;
+                        background:${interestColor(video.interest)};
+                        box-shadow:${interestGlow(video.interest)};
+                      "
+                    ></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <a
+                class="btn"
+                href="${video.url}"
+                target="_blank"
+              >
+                СМОТРЕТЬ
+              </a>
+
+            </div>
+          `;
+
+          grid.appendChild(card);
+
+        });
 
       } catch (err) {
 
-        return {
-          title: "не удалось загрузить название",
-          thumbnail: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
-          url: video.url,
-          hype: video.hype,
-          fun: video.fun,
-          interest: video.interest
-        };
-
-      }
-    }
-
-    async function renderVideos() {
-
-      grid.innerHTML = "";
-
-      const data = await Promise.all(
-        videos.map(fetchVideoData)
-      );
-
-      data.forEach(video => {
-
-        if (!video) return;
-
-        const card = document.createElement("div");
-        card.className = "card";
-
-        card.innerHTML = `
-          <img class="thumbnail" src="${video.thumbnail}" alt="preview">
-
-          <div class="card-content">
-
-            <div class="video-title">
-              ${video.title}
-            </div>
-
-            <div class="ratings">
-
-              <div class="rating">
-                <div class="rating-top">
-                  <span>ХАЙП</span>
-                  <span>${video.hype}%</span>
-                </div>
-
-                <div class="bar">
-                  <div
-                    class="fill"
-                    style="
-                      width:${video.hype}%;
-                      background:${hypeColor(video.hype)};
-                      box-shadow:${hypeGlow(video.hype)};
-                    "
-                  ></div>
-                </div>
-              </div>
-
-              <div class="rating">
-                <div class="rating-top">
-                  <span>
-                    РЖЕКИЧ ${funEmoji(video.fun)}
-                  </span>
-
-                  <span>${video.fun}%</span>
-                </div>
-
-                <div class="bar">
-                  <div
-                    class="fill"
-                    style="
-                      width:${video.fun}%;
-                      background:${funColor(video.fun)};
-                      box-shadow:${funGlow(video.fun)};
-                    "
-                  ></div>
-                </div>
-              </div>
-
-              <div class="rating">
-                <div class="rating-top">
-                  <span>ИНТЕРЕС</span>
-                  <span>${video.interest}%</span>
-                </div>
-
-                <div class="bar">
-                  <div
-                    class="fill"
-                    style="
-                      width:${video.interest}%;
-                      background:${interestColor(video.interest)};
-                      box-shadow:${interestGlow(video.interest)};
-                    "
-                  ></div>
-                </div>
-              </div>
-
-            </div>
-
-            <a
-              class="watch-btn"
-              href="${video.url}"
-              target="_blank"
-            >
-              СМОТРЕТЬ
-            </a>
-
+        grid.innerHTML = `
+          <div class="loading">
+            ошибка загрузки videos.json
           </div>
         `;
 
-        grid.appendChild(card);
-
-      });
-
+        console.error(err);
+      }
     }
 
-    renderVideos();
+    loadVideos();
+
   </script>
 
 </body>
