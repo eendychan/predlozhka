@@ -1,24 +1,24 @@
 [
   {
-    "title": "легендарный рикролл",
-    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    "hype": 95,
-    "fun": 100,
+    "title": "Я спустился на дно тиктока и заценил там поваров",
+    "url": "https://youtu.be/fBmFvZ_pVu4?si=q4eCp7yzmL7YLTB3",
+    "hype": 60,
+    "fun": 50,
+    "interest": 75
+  },
+
+  {
+    "title": "УЖАСЫ встроенной рекламы на Youtube...",
+    "url": "https://youtu.be/disrPErDYXw?si=iEHxhqk8ieO47L2T",
+    "hype": 67,
+    "fun": 40,
     "interest": 60
   },
 
   {
-    "title": "very important video",
-    "url": "https://www.youtube.com/watch?v=3GwjfUFyY6M",
-    "hype": 40,
-    "fun": 75,
-    "interest": 20
-  },
-
-  {
-    "title": "олдовый музон",
-    "url": "https://www.youtube.com/watch?v=L_jWHffIx5E",
-    "hype": 70,
+    "title": "КАК ПРОЖИТЬ ЦЕЛЫЙ ДЕНЬ НА 100 РУБЛЕЙ [2026]",
+    "url": "https://www.youtube.com/watch?v=dMSSlBISpRE",
+    "hype": 55,
     "fun": 50,
     "interest": 80
   }
