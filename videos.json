@@ -3,23 +3,23 @@
     "title": "Я спустился на дно тиктока и заценил там поваров",
     "url": "https://youtu.be/fBmFvZ_pVu4?si=q4eCp7yzmL7YLTB3",
     "hype": 60,
-    "fun": 50,
-    "interest": 75
+    "fun": 40,
+    "interest": 80
   },
 
   {
     "title": "УЖАСЫ встроенной рекламы на Youtube...",
     "url": "https://youtu.be/disrPErDYXw?si=iEHxhqk8ieO47L2T",
     "hype": 67,
-    "fun": 40,
-    "interest": 60
+    "fun": 10,
+    "interest": 55
   },
 
   {
     "title": "КАК ПРОЖИТЬ ЦЕЛЫЙ ДЕНЬ НА 100 РУБЛЕЙ [2026]",
     "url": "https://www.youtube.com/watch?v=dMSSlBISpRE",
     "hype": 55,
-    "fun": 50,
-    "interest": 80
+    "fun": 20,
+    "interest": 70
   }
 ]
