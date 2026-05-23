@@ -1,0 +1,25 @@
+[
+  {
+    "title": "легендарный рикролл",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "hype": 95,
+    "fun": 100,
+    "interest": 60
+  },
+
+  {
+    "title": "very important video",
+    "url": "https://www.youtube.com/watch?v=3GwjfUFyY6M",
+    "hype": 40,
+    "fun": 75,
+    "interest": 20
+  },
+
+  {
+    "title": "олдовый музон",
+    "url": "https://www.youtube.com/watch?v=L_jWHffIx5E",
+    "hype": 70,
+    "fun": 50,
+    "interest": 80
+  }
+]
