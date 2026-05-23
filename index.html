@@ -1,3 +1,8 @@
+# Обновлённый дизайн `index.html`
+
+Заменяй свой старый `index.html` этим.
+
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,52 +11,140 @@
 
   <title>ПРЕДЛОЖКА ХАНОВА</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+
   <style>
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    :root {
+      --bg: #07070b;
+      --card: rgba(20,20,28,0.85);
+      --border: rgba(255,255,255,0.08);
+      --text: #ffffff;
+      --muted: #9f9fb3;
+    }
+
     body {
-      background: #09090d;
+      font-family: 'Montserrat', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 30%),
+        radial-gradient(circle at top right, rgba(0,170,255,0.12), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(255,255,0,0.08), transparent 35%),
+        var(--bg);
+
       color: white;
-      font-family: Arial, sans-serif;
-      padding: 40px;
+      min-height: 100vh;
+      padding: 50px 40px 80px;
+      overflow-x: hidden;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 20%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 55px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+      left: 50%;
+      top: -180px;
+      transform: translateX(-50%);
+      z-index: -1;
+      filter: blur(20px);
     }
 
     h1 {
-      text-align: center;
-      font-size: 64px;
-      margin-bottom: 12px;
-      letter-spacing: 3px;
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      margin-bottom: 18px;
+
+      background: linear-gradient(180deg, #ffffff, #9ed9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
       text-shadow:
-        0 0 10px #fff,
-        0 0 30px rgba(255,255,255,0.3);
+        0 0 30px rgba(255,255,255,0.15);
     }
 
     .subtitle {
-      text-align: center;
-      color: #a0a0a0;
-      margin-bottom: 50px;
+      max-width: 950px;
+      margin: 0 auto;
+      color: var(--muted);
       font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .top-panel {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .badge {
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      color: #d9d9e6;
+      font-size: 13px;
+      box-shadow:
+        inset 0 1px rgba(255,255,255,0.05),
+        0 0 20px rgba(0,0,0,0.2);
     }
 
     .videos-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      gap: 26px;
     }
 
-    @media (max-width: 1400px) {
+    @media (max-width: 1500px) {
       .videos-grid {
         grid-template-columns: repeat(3, 1fr);
       }
     }
 
-    @media (max-width: 1000px) {
+    @media (max-width: 1050px) {
       .videos-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      h1 {
+        font-size: 54px;
       }
     }
 
@@ -60,53 +153,102 @@
         grid-template-columns: 1fr;
       }
 
+      body {
+        padding: 35px 18px 60px;
+      }
+
       h1 {
-        font-size: 38px;
+        font-size: 36px;
+        line-height: 1.1;
       }
     }
 
     .card {
-      background: #13131a;
-      border: 1px solid #252530;
-      border-radius: 18px;
+      position: relative;
       overflow: hidden;
-      transition: 0.2s;
+      border-radius: 26px;
+
+      background: var(--card);
+      border: 1px solid var(--border);
+
+      backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.35),
+        inset 0 1px rgba(255,255,255,0.04);
+
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
     .card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.16);
+
+      box-shadow:
+        0 18px 45px rgba(0,0,0,0.5),
+        0 0 30px rgba(255,255,255,0.04);
+    }
+
+    .thumbnail-wrap {
+      position: relative;
+      overflow: hidden;
     }
 
     .thumbnail {
       width: 100%;
       aspect-ratio: 16/9;
       object-fit: cover;
-      background: #000;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .card:hover .thumbnail {
+      transform: scale(1.04);
+    }
+
+    .thumbnail-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.55), transparent 50%);
     }
 
     .content {
-      padding: 16px;
+      padding: 20px;
     }
 
     .title {
-      font-size: 18px;
-      font-weight: bold;
-      line-height: 1.35;
-      margin-bottom: 16px;
+      font-size: 19px;
+      font-weight: 700;
+      line-height: 1.45;
+      margin-bottom: 18px;
+      min-height: 56px;
     }
 
     .ratings {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
+    }
+
+    .rating-box {
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
     }
 
     .rating-head {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 6px;
+      align-items: center;
+      margin-bottom: 8px;
       font-size: 13px;
-      color: #d0d0d0;
+      color: #d9d9e6;
+      font-weight: 600;
     }
 
     .bar {
@@ -114,51 +256,84 @@
       height: 12px;
       border-radius: 999px;
       overflow: hidden;
-      background: #222;
+      background: rgba(255,255,255,0.06);
     }
 
     .fill {
       height: 100%;
       border-radius: 999px;
+      transition: 0.3s;
     }
 
     .btn {
-      display: block;
-      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+      margin-top: 20px;
       width: 100%;
-      text-align: center;
+
       text-decoration: none;
-      background: white;
       color: black;
-      padding: 12px;
-      border-radius: 12px;
-      font-weight: bold;
-      transition: 0.2s;
+
+      padding: 14px;
+      border-radius: 16px;
+
+      font-weight: 800;
+      letter-spacing: 1px;
+
+      background:
+        linear-gradient(180deg, #ffffff, #d6d6d6);
+
+      transition:
+        transform 0.15s ease,
+        opacity 0.2s ease;
     }
 
     .btn:hover {
-      opacity: 0.85;
+      opacity: 0.9;
+      transform: scale(1.01);
     }
 
     .loading {
-      text-align: center;
-      padding: 80px;
-      color: #777;
       grid-column: 1/-1;
+      text-align: center;
+      padding: 120px;
+      color: #888;
+      font-size: 18px;
     }
+
   </style>
 </head>
 
 <body>
 
-  <h1>ПРЕДЛОЖКА ХАНОВА</h1>
+  <div class="bg-grid"></div>
 
-  <div class="subtitle">
-    поскольку все в рот ебали дискорд, а я в рот ебал гугл докс - предложка переезжает сюда!
-  </div>
+  <div class="container">
 
-  <div class="videos-grid" id="videosGrid">
-    <div class="loading">загрузка видосиков...</div>
+    <div class="hero">
+
+      <h1>ПРЕДЛОЖКА ХАНОВА</h1>
+
+      <div class="subtitle">
+        поскольку все в рот ебали дискорд, а я в рот ебал гугл докс — предложка переезжает сюда!
+      </div>
+
+      <div class="top-panel">
+        <div class="badge">🎬 видосики для стрима</div>
+        <div class="badge">⚡ оценки хайпа</div>
+        <div class="badge">🤣 ржекич контроль</div>
+        <div class="badge">🧠 фильтр интереса</div>
+      </div>
+
+    </div>
+
+    <div class="videos-grid" id="videosGrid">
+      <div class="loading">загрузка видосиков...</div>
+    </div>
+
   </div>
 
   <script>
@@ -188,7 +363,7 @@
 
       if (value < 70) return "none";
 
-      return `0 0 16px rgba(255,230,0,${value / 100})`;
+      return `0 0 18px rgba(255,230,0,${value / 100})`;
     }
 
     function interestColor(value) {
@@ -202,7 +377,7 @@
 
       if (value < 70) return "none";
 
-      return `0 0 16px rgba(0,200,255,${value / 100})`;
+      return `0 0 18px rgba(0,200,255,${value / 100})`;
     }
 
     function funColor(value) {
@@ -218,7 +393,7 @@
 
       if (value < 70) return "none";
 
-      return `0 0 16px rgba(0,255,100,${value / 100})`;
+      return `0 0 18px rgba(0,255,100,${value / 100})`;
     }
 
     function funEmoji(value) {
@@ -259,11 +434,18 @@
           card.className = "card";
 
           card.innerHTML = `
-            <img
-              class="thumbnail"
-              src="${thumbnail}"
-              alt="preview"
-            >
+
+            <div class="thumbnail-wrap">
+
+              <img
+                class="thumbnail"
+                src="${thumbnail}"
+                alt="preview"
+              >
+
+              <div class="thumbnail-overlay"></div>
+
+            </div>
 
             <div class="content">
 
@@ -273,7 +455,8 @@
 
               <div class="ratings">
 
-                <div>
+                <div class="rating-box">
+
                   <div class="rating-head">
                     <span>ХАЙП</span>
                     <span>${video.hype}%</span>
@@ -289,9 +472,11 @@
                       "
                     ></div>
                   </div>
+
                 </div>
 
-                <div>
+                <div class="rating-box">
+
                   <div class="rating-head">
                     <span>
                       РЖЕКИЧ ${funEmoji(video.fun)}
@@ -310,9 +495,11 @@
                       "
                     ></div>
                   </div>
+
                 </div>
 
-                <div>
+                <div class="rating-box">
+
                   <div class="rating-head">
                     <span>ИНТЕРЕС</span>
                     <span>${video.interest}%</span>
@@ -328,6 +515,7 @@
                       "
                     ></div>
                   </div>
+
                 </div>
 
               </div>
@@ -337,7 +525,7 @@
                 href="${video.url}"
                 target="_blank"
               >
-                СМОТРЕТЬ
+                ▶ СМОТРЕТЬ ВИДОС
               </a>
 
             </div>
@@ -365,3 +553,18 @@
 
 </body>
 </html>
+```
+
+Что стало лучше:
+
+* красивый фон с сеткой и свечением
+* стеклянные карточки
+* нормальный современный шрифт
+* плавные анимации
+* hover-эффекты
+* неон вокруг топовых оценок
+* более жирная и атмосферная шапка
+* красивые блоки для оценок
+* затемнение превью как на нормальных сайтах
+* кнопка теперь выглядит как кнопка, а не дефолтная ссылка
+* всё выглядит как нормальный стримерский dashboard, а не html из 2009
